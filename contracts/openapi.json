@@ -1,0 +1,881 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AgentLens Demo API",
+    "version": "0.1.0",
+    "description": "单实例演示平台；请求与响应详细业务字段见同目录 API与数据契约.md。列表暂不分页。"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8080/api/v1"
+    }
+  ],
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "健康检查",
+        "operationId": "get__health",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/me": {
+      "get": {
+        "summary": "当前账号",
+        "operationId": "get__me",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/projects": {
+      "get": {
+        "summary": "项目列表",
+        "operationId": "get__projects",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": []
+      },
+      "post": {
+        "summary": "创建项目",
+        "operationId": "post__projects",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{id}/members": {
+      "post": {
+        "summary": "项目成员权限",
+        "operationId": "post__projects__id__members",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datasets": {
+      "get": {
+        "summary": "数据集列表",
+        "operationId": "get__datasets",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/datasets/import": {
+      "post": {
+        "summary": "导入 JSONL 草稿",
+        "operationId": "post__datasets_import",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datasets/{id}/publish": {
+      "post": {
+        "summary": "发布不可变版本",
+        "operationId": "post__datasets__id__publish",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/agents": {
+      "get": {
+        "summary": "Agent 列表",
+        "operationId": "get__agents",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "创建 Agent 快照",
+        "operationId": "post__agents",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/{id}/test": {
+      "post": {
+        "summary": "连接测试",
+        "operationId": "post__agents__id__test",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/runs": {
+      "get": {
+        "summary": "运行列表",
+        "operationId": "get__runs",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "创建运行",
+        "operationId": "post__runs",
+        "responses": {
+          "202": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{id}": {
+      "get": {
+        "summary": "运行详情",
+        "operationId": "get__runs__id_",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/runs/{id}/cancel": {
+      "post": {
+        "summary": "取消运行",
+        "operationId": "post__runs__id__cancel",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/results/{id}": {
+      "get": {
+        "summary": "案例详情",
+        "operationId": "get__results__id_",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/results/{id}/reviews": {
+      "post": {
+        "summary": "人工复核",
+        "operationId": "post__results__id__reviews",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comparisons": {
+      "get": {
+        "summary": "版本配对比较",
+        "operationId": "get__comparisons",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "baseline_run_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "candidate_run_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/traces/batch": {
+      "post": {
+        "summary": "接收步骤",
+        "operationId": "post__traces_batch",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reports": {
+      "get": {
+        "summary": "报告列表",
+        "operationId": "get__reports",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "创建报告快照",
+        "operationId": "post__reports",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "字段定义见 API与数据契约.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reports/{id}/html": {
+      "get": {
+        "summary": "下载离线 HTML",
+        "operationId": "get__reports__id__html",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/audit": {
+      "get": {
+        "summary": "审计列表",
+        "operationId": "get__audit",
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "格式或字段错误"
+          },
+          "401": {
+            "description": "未认证"
+          },
+          "403": {
+            "description": "无项目权限"
+          },
+          "409": {
+            "description": "状态或幂等冲突"
+          },
+          "422": {
+            "description": "不可比较或连接失败"
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

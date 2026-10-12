@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-12T06:35:20.801Z",
+  "environment": "Java local H2; dedicated port 8082; separate test database",
+  "checks": [
+    {
+      "name": "Worker process interruption and restart",
+      "passed": true,
+      "preserved_completed": 2,
+      "interrupted_needs_review": 2,
+      "final_status": "COMPLETED_WITH_ERRORS"
+    },
+    {
+      "name": "100 mock cases, 200 ms response, concurrency 2",
+      "passed": true,
+      "seconds": 13.42,
+      "completed": 100,
+      "pass": 100
+    },
+    {
+      "name": "Stopped database backup copied and restored",
+      "passed": true,
+      "restored_run": "run-5e2dacdf-187",
+      "results": 25
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-12T06:40:59.556Z",
+  "bundle": "D:\\国创赛竞赛材料\\releases\\AgentLens-0.1.0",
+  "passed": true,
+  "checks": [
+    "JAR starts from isolated working directory",
+    "Serves built Vue page",
+    "Default login succeeds",
+    "Seeds 25 simulated cases"
+  ]
+}

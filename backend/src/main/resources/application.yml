@@ -1,0 +1,26 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/agentlens;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_ON_EXIT=FALSE;WRITE_DELAY=0}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+  sql:
+    init:
+      mode: always
+  jackson:
+    serialization:
+      indent-output: false
+agentlens:
+  demo: ${DEMO_ENABLED:true}
+  password: ${DEMO_PASSWORD:Demo2026!}
+  allowed-origins: ${AGENT_ALLOWED_ORIGINS:}
+  worker-enabled: ${WORKER_ENABLED:true}
+  mock-delay-ms: ${MOCK_DELAY_MS:200}
+logging:
+  level:
+    root: WARN
+    cn.agentlens: INFO

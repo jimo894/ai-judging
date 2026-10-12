@@ -1,0 +1,11 @@
+.tools
+.git
+**/node_modules
+**/target
+**/dist
+data
+logs
+backups
+frontend/test-results
+frontend/playwright-report
+deployment/.env

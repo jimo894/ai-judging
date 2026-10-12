@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS documents (
+  id VARCHAR(100) PRIMARY KEY,
+  kind VARCHAR(32) NOT NULL,
+  project_id VARCHAR(100) NOT NULL,
+  body LONGTEXT NOT NULL,
+  created_at VARCHAR(40) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS schema_history (
+  version VARCHAR(20) PRIMARY KEY,
+  description VARCHAR(200) NOT NULL
+);
